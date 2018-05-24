@@ -1,0 +1,5 @@
+Alex 40
+John 125
+Chris 120
+Veli 295
+Ali 30
