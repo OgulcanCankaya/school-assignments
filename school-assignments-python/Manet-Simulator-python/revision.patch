@@ -1,0 +1,66 @@
+3c3
+< command_file=open("commands3", "r")
+---
+> command_file=open("commands", "r")
+5c5
+< packet_size=int(sys.argv[1])
+---
+> packet_size=float(sys.argv[1])
+13c13
+< total_time=(data_size//packet_size)
+---
+> total_time=int(data_size/(packet_size))
+27c27
+<         if int(west_ranges[node])<=int(coor[nodes[i]][0])<=int(east_ranges[node]) and int(south_ranges[node])<=int(coor[nodes[i]][1])<=int(north_ranges[node]) and node!=nodes[i]:
+---
+>         if int(float(west_ranges[node]))<=int(float(coor[nodes[i]][0]))<=int(float(east_ranges[node])) and int(float(south_ranges[node]))<=int(float(coor[nodes[i]][1]))<=int(float(north_ranges[node])) and node!=nodes[i]:
+33,35c33,35
+<     x_axis=abs(int(a[0])-int(b[0]))
+<     y_axis=abs(int(a[1])-int(b[1]))
+<     return sq((x_axis**2)+(y_axis**2))/int(battery[node2])
+---
+>     x_axis=abs(float(a[0])-float(b[0]))
+>     y_axis=abs(float(a[1])-float(b[1]))
+>     return (sq((x_axis**2)+(y_axis**2))/int(battery[node2]))
+75a76
+>             is_there_a_path=0
+89,92c90,93
+<             south_ranges.update({node:int(coor[node][1])-int(seperated_ranges[node][3])})
+<             north_ranges.update({node: int(coor[node][1]) + int(seperated_ranges[node][2])})
+<             west_ranges.update({node: int(coor[node][0]) - int(seperated_ranges[node][1])})
+<             east_ranges.update({node: int(seperated_ranges[node][0]) + int(coor[node][0])})
+---
+>             south_ranges.update({node:float(coor[node][1])-float(seperated_ranges[node][3])})
+>             north_ranges.update({node: float(coor[node][1]) + float(seperated_ranges[node][2])})
+>             west_ranges.update({node: float(coor[node][0]) - float(seperated_ranges[node][1])})
+>             east_ranges.update({node: float(seperated_ranges[node][0]) + float(coor[node][0])})
+96c97,101
+<             neighbor.update({banana:neighbor_find(banana)})
+---
+>             south_ranges.update({node: float(coor[node][1]) - float(seperated_ranges[node][3])})
+>             north_ranges.update({node: float(coor[node][1]) + float(seperated_ranges[node][2])})
+>             west_ranges.update({node: float(coor[node][0]) - float(seperated_ranges[node][1])})
+>             east_ranges.update({node: float(seperated_ranges[node][0]) + float(coor[node][0])})
+>             neighbor.update({nodes[b]: neighbor_find(nodes[b]) for b in range(len(nodes))})
+122,125c127,130
+<             south_ranges.update({node:int(coor[node][1])-int(seperated_ranges[node][3])})
+<             north_ranges.update({node: int(coor[node][1]) + int(seperated_ranges[node][2])})
+<             west_ranges.update({node: int(coor[node][0]) - int(seperated_ranges[node][1])})
+<             east_ranges.update({node: int(seperated_ranges[node][0]) + int(coor[node][0])})
+---
+>             south_ranges.update({node:float(coor[node][1])-float(seperated_ranges[node][3])})
+>             north_ranges.update({node: float(coor[node][1]) + float(seperated_ranges[node][2])})
+>             west_ranges.update({node: float(coor[node][0]) - float(seperated_ranges[node][1])})
+>             east_ranges.update({node: float(seperated_ranges[node][0]) + float(coor[node][0])})
+168c173
+<     if remeaning>0:
+---
+>     if remeaning>float(0):
+170,172c175,177
+<     if remeaning<0:
+<         remeaning=0
+<     print("\tREMAINING DATA SIZE: " +str(float(remeaning))+ " BYTE")
+---
+>     if remeaning<float(0):
+>         remeaning=float(0)
+>     print("\tREMAINING DATA SIZE: " +str(round(float(remeaning),1))+ " BYTE")

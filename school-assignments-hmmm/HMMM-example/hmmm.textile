@@ -1,0 +1,20 @@
+#
+# Input order should be like == Falling time (r3), initial velocity (r4), initial position (r5)
+# The output will give you the final position 
+# r2 is 2
+#
+# Formula is == [Gravity*FallingTime*FallingTime/2]+ (InitialVelocity*FallingTime) + InitialPosition
+#
+0 setn r1 -10
+1 setn r2 2
+2 read r3 
+3 read r4
+4 read r5
+5 mul r10 r3 r3
+6 mul r10 r10 r1
+7 div r10 r10 r2
+8 mul r11 r4 r3
+9 add r12 r11 r10
+10 add r12 r12 r5
+11 write r12
+12 halt

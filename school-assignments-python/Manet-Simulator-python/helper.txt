@@ -1,0 +1,4 @@
+Simulator can be used with integers or float (xy.zt) numbers.
+To use integers use 4
+To use floats use 4-1
+Examples inside the file.
